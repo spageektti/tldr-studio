@@ -4,7 +4,7 @@ from PyQt6.QtWidgets import QApplication
 from welcome_window import WelcomeWindow
 
 def config_is_valid():
-    return True # Placeholder for now
+    return False # Placeholder for now
 
 def main():
     if os.path.exists(os.path.expanduser("~/tldr-studio")):
