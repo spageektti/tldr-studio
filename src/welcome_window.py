@@ -12,24 +12,24 @@ class WelcomeWindow(QMainWindow):
 
         self.setStyleSheet("""
             QMainWindow {
-                background-color: #1E1E1E;  /* Dark gray background */
+                background-color: #1E1E1E;
             }
             QLabel {
-                color: #FFFFFF;  /* White text */
-                font-family: Inter, sans-serif;  /* Custom font */
+                color: #FFFFFF;
+                font-family: Inter, sans-serif;
             }
             QPushButton {
-                background-color: #2B2D30;  /* Blue background */
-                color: white;  /* White text */
-                border: none;  /* No border */
-                border-radius: 5px;  /* Rounded corners */
-                padding: 10px;  /* Padding inside the button */
+                background-color: #2B2D30;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 10px;
             }
             QPushButton:hover {
-                background-color: #3A3D40;  /* Darker blue on hover */
+                background-color: #3A3D40;
             }
             QPushButton:pressed {
-                background-color: #1F2123;  /* Even darker blue when pressed */
+                background-color: #1F2123;
             }
         """)
 
@@ -39,7 +39,7 @@ class WelcomeWindow(QMainWindow):
         self.buttons = self.create_buttons()
 
         layout = QVBoxLayout()
-        layout.setSpacing(20)  # Adjusted vertical spacing
+        layout.setSpacing(20)
         layout.setContentsMargins(0, 0, 0, 0)
         layout.addWidget(self.welcome_label)
         layout.addWidget(self.buttons)
@@ -53,7 +53,6 @@ class WelcomeWindow(QMainWindow):
         menu_bar = QMenuBar(self)
         self.setMenuBar(menu_bar)
 
-        # settings menu
         settings_menu = QMenu("Settings", self)
         menu_bar.addMenu(settings_menu)
 
@@ -74,11 +73,11 @@ class WelcomeWindow(QMainWindow):
         translate_button = self.create_button("icons/translate.png", "Translate")
 
         buttons_layout = QHBoxLayout()
-        buttons_layout.setSpacing(20)  # Adjusted horizontal spacing
+        buttons_layout.setSpacing(20)
 
         for button, label in [(create_button, "Create"), (edit_button, "Edit"), (translate_button, "Translate")]:
             button_layout = QVBoxLayout()
-            button_layout.setSpacing(10)  # Adjusted spacing between button and label
+            button_layout.setSpacing(10)
             button_layout.setContentsMargins(0, 0, 0, 0)
             button_layout.addWidget(button, alignment=Qt.AlignmentFlag.AlignCenter)
             button_layout.addWidget(QLabel(f"<p style='font-size: 18px; font-weight: 500;'>{label}</p>"), alignment=Qt.AlignmentFlag.AlignCenter)
@@ -100,7 +99,6 @@ class WelcomeWindow(QMainWindow):
         self.update_layout()
 
     def update_layout(self):
-        # Scaling factors based on the target resolution (1920x1080)
         target_width = 1920
         target_height = 1080
         current_width = self.width()
@@ -109,16 +107,13 @@ class WelcomeWindow(QMainWindow):
         width_scale = current_width / target_width
         height_scale = current_height / target_height
 
-        # Set contents margins based on the scaled values, with a minimum margin
-        min_margin = 20  # Minimum margin value
+        min_margin = 20
         margin_x = max(int(100 * width_scale), min_margin)
         margin_y = max(int(100 * height_scale), min_margin)
 
-        # Update button layout margins
         for layout in self.buttons.findChildren(QVBoxLayout):
             layout.setContentsMargins(margin_x, margin_y, margin_x, margin_y)
 
-        # Update main layout margins
         main_layout = self.centralWidget().layout()
         main_layout.setContentsMargins(int(200 * width_scale), int(200 * height_scale), int(200 * width_scale), int(200 * height_scale))
 
