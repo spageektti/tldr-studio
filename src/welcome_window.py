@@ -31,6 +31,23 @@ class WelcomeWindow(QMainWindow):
             QPushButton:pressed {
                 background-color: #1F2123;
             }
+                        QMenuBar {
+                            background-color: #2B2D30;
+                            color: white;
+                            border: none;
+                            padding: 5px;
+                            border-bottom: 2px solid #393B40;
+                        }
+                        QMenuBar::item {
+                            background-color: #2B2D30;
+                            color: white;
+                        }
+                        QMenuBar::item:selected {
+                            background-color: #3A3D40;
+                        }
+                        QMenuBar::item:pressed {
+                            background-color: #1F2123;
+                        }
         """)
 
         self.create_menu_bar()
